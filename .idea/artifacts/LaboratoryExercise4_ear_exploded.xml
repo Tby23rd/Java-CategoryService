@@ -2,7 +2,7 @@
   <artifact type="exploded-ear" name="LaboratoryExercise4:ear exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/LaboratoryExercise4_ear_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="LaboratoryExercise4/javaeeApplication/javaEEApplication" />
+      <element id="javaee-facet-resources" facet="LaboratoryExercise5/javaeeApplication/javaEEApplication" />
     </root>
   </artifact>
 </component>

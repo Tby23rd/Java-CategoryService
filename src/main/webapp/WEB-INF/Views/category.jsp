@@ -31,8 +31,8 @@
     </style>
 </head>
 <body>
-<h1>Item Category</h1>
-<div class="container">
+<h1 id="mes">${errorMessage}</h1>
+<div class="container2">
 
     <form method="GET">
         <div class="form-group">
@@ -64,6 +64,8 @@
                                href="update-todo?id=${todo.catcode}" >Edit</a> </td>
                     <td>    <a type="button" class="btn btn-primary"
                                href="delete-todo?id=${todo.catcode}" >Delete</a> </td>
+                    <td>    <a type="button" class="btn btn-primary" onmouseout="myFunction()"
+                               href="see-todo?id=${todo.catcode}" >Items</a> </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -72,6 +74,9 @@
 
 </div>
 <script>
+    function myFunction(){
+        document.getElementById("mes").innerHTML = "";
+    }
 </script>
 
 </body>
