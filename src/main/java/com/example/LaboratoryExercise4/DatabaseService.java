@@ -78,4 +78,24 @@ public class DatabaseService implements DatabaseInterface {
         }
         return Itemlist;
     }
+    //change to display4
+    public List<Practice> display3(String catcode) throws ClassNotFoundException, SQLException {
+        //create an array list that will contain the data recovered
+        //change list
+        List<Practice> PracticeList = new ArrayList<Practice>();
+        //change select from
+        String quer1 = "Select praccode,pracdesc,pracwow from practice where catcode=?";
+        PreparedStatement query = con.prepareStatement(quer1);
+        query.setString(1, catcode);
+        ResultSet rs = query.executeQuery();
+        //change to obj4 and name os Class
+        Practice obj3;
+        //display records if there is data;
+        while (rs.next()) {
+            obj3 = new Practice(rs.getString("praccode"),rs.getString("pracdesc"),rs.getString("pracwow"));
+            PracticeList.add(obj3);
+        }
+        //return listname
+        return PracticeList;
+    }
 }

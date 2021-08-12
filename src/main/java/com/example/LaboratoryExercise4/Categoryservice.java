@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
 @Service
 public class Categoryservice {
     private static List<Category> todos = new ArrayList<Category>();
@@ -21,19 +22,24 @@ public class Categoryservice {
         todos.add(new Category("SS", "School Supplies"));
         todos.add(new Category("Dr", "Drinks"));
     }
+
     public void initialadd(){
         todos.add(new Category("SS", "School Supplies"));
         todos.add(new Category("Dr", "Drinks"));
     }
+
     public List<Category> retrieveTodos() {
         List<Category> filteredTodos = new ArrayList<Category>();
         for (Category todo : todos) {
             filteredTodos.add(todo);
         }
-        return filteredTodos; }
+        return filteredTodos;
+    }
+
     public void addTodo(String catcode, String catdesc) {
         todos.add(new Category(catcode, catdesc));
     }
+
     public void deleteTodo(String id) {
         for (int i = 0; i < todos.size(); i++) {
             if(id.equals(todos.get(i).getCatcode())) {
@@ -42,6 +48,7 @@ public class Categoryservice {
             }
         }
     }
+
     public Category retrieve(String id){
         for(Category todo: todos){
             if(todo.getCatcode().equals(id)){
@@ -50,6 +57,7 @@ public class Categoryservice {
         }
         return null;
     }
+
     public void update(Category todo){
         todos.remove(todo);
         todos.add(todo);

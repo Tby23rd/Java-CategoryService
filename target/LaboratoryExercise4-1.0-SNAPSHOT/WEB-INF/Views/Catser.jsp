@@ -18,8 +18,6 @@
             <input name="catcode" type="text" class="form-control" required />
 
         </fieldset>
-
-
         <fieldset class="form-group">
             <label> Category description :</label>
             <input name="catdesc" type="text" class="form-control" required />

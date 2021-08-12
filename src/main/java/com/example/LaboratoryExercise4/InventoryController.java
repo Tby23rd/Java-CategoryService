@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-@SessionAttributes({"id","desc","errMsg","errorMessage"})
+@SessionAttributes({"id","desc","wow","errMsg","errorMessage"})
 @RequestMapping
 @Controller
 public class InventoryController {
@@ -97,6 +97,29 @@ public class InventoryController {
     }
     @RequestMapping(value ="/see-todo", method = RequestMethod.POST)
     public String seetodo2(ModelMap model) throws SQLException, ClassNotFoundException {
+        return "redirect:/";
+    }
+    @RequestMapping(value ="/see-todo1", method = RequestMethod.GET)
+    public String seetodoprac(ModelMap model, @RequestParam(defaultValue = "")
+            String id) throws
+            SQLException, ClassNotFoundException {
+        model.put("id", id);
+        service1 = new DatabaseService(connect.connect());
+        String iid = (String) model.get("id");
+        List<Practice> PracticeList = new ArrayList<>();
+        PracticeList = service1.display3(iid);
+        if(PracticeList.size()==0){
+            model.put("errorMessage","There is not Practice for this category ");
+            return "redirect:/";
+        }
+        model.put("desc",iid);
+        model.put("wow",iid);
+        System.out.println(iid);
+        model.addAttribute("todos1", service1.display3(iid));
+        return "practice";
+    }
+    @RequestMapping(value ="/see-todo1", method = RequestMethod.POST)
+    public String seetodoprac2(ModelMap model) throws SQLException, ClassNotFoundException {
         return "redirect:/";
     }
 }

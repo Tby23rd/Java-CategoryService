@@ -31,8 +31,9 @@
     </style>
 </head>
 <body>
-<h1 id="mes">${errorMessage}</h1>
-<div class="container2">
+<h1>Item Category</h1>
+
+<div class="container">
 
     <form method="GET">
         <div class="form-group">
@@ -43,10 +44,33 @@
             <label for="cdesc">Description:</label>
             <input type="text" name="catdesc" class="form-control" id="cdesc" value="${desc}">
         </div>
+        <div class ="form-group">
+            <div class ="form-group">
+                <label for="catcodeStuff">Category:</label>
+                <input type="text" name="catcodeOption" list="catcodeStuff">
+                <datalist id="catcodeStuff">
+                    <c:forEach items="${todos}" var="todo">
+                        <option value="${todo.catcode}">${todo.catcode}</option>
+                    </c:forEach>
+                </datalist>
+            </div>
+            <label for="cdesc">Description:</label>
+            <select name="catdesctodolist">
+                <c:forEach items="${todos}" var="todo">
+                    <option value="${todo.catdesc}">${todo.catdesc}</option>
+                </c:forEach>
+            </select>
+        </div>
+
+
         <a class="btn btn-success" href="add-todo">Add</a>
+
     </form>
+
+    <h1 id="mes">${errorMessage}</h1>
     <div class="container2">
         <h2>Categories</h2>
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -55,24 +79,32 @@
             </tr>
             </thead>
             <tbody>
+
             <c:forEach items="${todos}" var="todo">
+
                 <tr>
                     <td>${todo.catcode}</td>
                     <td>${todo.catdesc}</td>
 
                     <td>    <a type="button" class="btn btn-primary"
                                href="update-todo?id=${todo.catcode}" >Edit</a> </td>
+
                     <td>    <a type="button" class="btn btn-primary"
                                href="delete-todo?id=${todo.catcode}" >Delete</a> </td>
+
                     <td>    <a type="button" class="btn btn-primary" onmouseout="myFunction()"
                                href="see-todo?id=${todo.catcode}" >Items</a> </td>
+                    <td>    <a type="button" class="btn btn-primary" onmouseout="myFunction()"
+                               href="see-todo1?id=${todo.catcode}" >Practice</a> </td>
                 </tr>
+
             </c:forEach>
             </tbody>
         </table>
     </div>
 
 </div>
+
 <script>
     function myFunction(){
         document.getElementById("mes").innerHTML = "";
